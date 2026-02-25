@@ -4,11 +4,8 @@ import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import { useState } from "react";
 import { loginSchema } from "../utils/validationsSchema";
-
-type LoginValuesProps = {
-    email: string;
-    password: string;
-}
+import type { LoginValuesProps } from "../types/login";
+import { validateLogin } from "../utils/validateFields";
 
 const initialValues: LoginValuesProps = {
     email: "",
@@ -27,12 +24,14 @@ const Login = () => {
             <div className="w-full p-8 max-w-md bg-white rounded-2xl border border-neutral-200">
 
                 <div className="mb-6">
-                    <h1 className="text-2xl text-center font-extrabold">Create an account</h1>
+                    <h1 className="text-xl sm:text-2xl text-center font-extrabold">Welcome Back</h1>
                 </div>
 
                 <Formik
                     initialValues={initialValues}
-                    validationSchema={loginSchema}
+                    validate={validateLogin}
+                    validateOnBlur={false}
+                    validateOnChange={false}
                     onSubmit={handleSubmit}
                 >
                     {() => (
@@ -58,9 +57,10 @@ const Login = () => {
                     )}
                 </Formik>
 
-                <p className="text-sm text-center text-neutral-500 mt-6">
-                    <Link to="/" className="text-sky-800 font-semibold hover:underline">
-                        Home
+                <p className="text-sm sm:text-base text-center text-neutral-500 mt-6">
+                    Don't have an account?&nbsp;
+                    <Link to="/signup" className="text-sky-800 font-semibold hover:underline">
+                        Signup
                     </Link>
                 </p>
             </div>
