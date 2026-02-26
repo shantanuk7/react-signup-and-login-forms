@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import InputField from "../components/InputField";
 import type { SignupValuesProps } from "../types/signup";
 import { validateSignup } from "../utils/validateFields";
-import { useUser } from "../context/UserContext";
+import axios from "axios";
 
 const initialValues: SignupValuesProps = {
     name: "",
@@ -14,13 +14,21 @@ const initialValues: SignupValuesProps = {
 }
 
 const Signup = () => {
-    const context = useUser();
     const navigate = useNavigate();
 
-    const handleSubmit = (values: SignupValuesProps) => {
-        context?.setUserData(values);
-        navigate("/login");
-        console.log(values);
+    const handleSubmit = async (values: SignupValuesProps) => {
+        try {
+            const response = await axios.post(`${import.meta.env.VITE_AUTH_URI}/register`, values);
+            if (response.data.success) {
+                alert(response.data.message);
+                navigate("/login");
+            }
+            console.log(response.data);
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                alert(error.response?.data?.message || "Something went wrong. Try again");
+            }
+        }
     }
 
     return (
