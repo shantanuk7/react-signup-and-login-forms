@@ -8,6 +8,7 @@ import axios from "axios";
 import { setAuthToken } from "../utils/authToken";
 import { userLogin } from "../api/auth.api";
 import toast from "react-hot-toast";
+import useUser from "../hooks/useUser";
 
 const initialValues: LoginPropsType = {
     email: "",
@@ -15,6 +16,7 @@ const initialValues: LoginPropsType = {
 }
 
 const Login = () => {
+    const { fetchCurrentUser } = useUser();
     const navigate = useNavigate();
 
     const handleSubmit = async (values: LoginPropsType) => {
@@ -23,6 +25,7 @@ const Login = () => {
             if (data.success) {
                 toast.success(data.message);
                 setAuthToken(data.data.token);
+                await fetchCurrentUser();
                 navigate("/");
             }
         } catch (error) {
