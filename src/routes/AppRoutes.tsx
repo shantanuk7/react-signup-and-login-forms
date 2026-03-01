@@ -8,6 +8,7 @@ import CreateTicket from "../pages/CreateTicket";
 import ViewTicket from "../pages/ViewTicket";
 import Tickets from "../pages/Tickets";
 import Layout from "../components/Layout";
+import UpdateTicket from "../pages/UpdateTicket";
 
 const AppRoutes = () => {
     return (
@@ -22,6 +23,7 @@ const AppRoutes = () => {
                     <Route path="/tickets" element={<Tickets />} />
                     <Route path="/tickets/create" element={<CreateTicket />} />
                     <Route path="/tickets/:id" element={<ViewTicket />} />
+                    <Route path="/tickets/:id/edit" element={<UpdateTicket />} />
                 </Route>
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login />} />

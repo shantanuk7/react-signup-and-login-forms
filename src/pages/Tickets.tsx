@@ -63,8 +63,20 @@ const Tickets = () => {
                                 <td className="px-3 md:px-6 py-4">
                                     {ticket?.createdAt ? new Date(ticket.createdAt).toLocaleDateString() : "-"}
                                 </td>
-                                <td className="px-3 md:px-6 py-4">
+                                <td className="px-3 md:px-6 py-4 space-x-1">
                                     <Link to={`/tickets/${ticket?.id}`} className="text-sky-800 hover:text-sky-500">View</Link>
+                                    {
+                                        ticket?.status !== "CLOSED" &&
+                                        <>
+                                            <span className="text-neutral-300">|</span>
+                                            <Link 
+                                                to={`/tickets/${ticket?.id}/edit`} 
+                                                className="text-sky-800 hover:text-sky-500"
+                                            >
+                                                Update
+                                            </Link>
+                                        </>
+                                    }
                                 </td>
                             </tr>
                         ))
