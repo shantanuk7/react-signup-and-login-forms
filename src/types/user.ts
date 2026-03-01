@@ -3,5 +3,10 @@ export interface User {
     name: string;
     email: string;
     role: "CUSTOMER" | "SUPPORT_AGENT";
-    permissions: string[]; 
+    permissions?: string[]; 
+}
+
+export type SupportAgentType = {
+    id: string;
+    name: string;
 }

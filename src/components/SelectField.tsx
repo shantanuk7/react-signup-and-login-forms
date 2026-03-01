@@ -1,9 +1,10 @@
 import { useField } from "formik";
+import type { SupportAgentType } from "../types/user";
 
 type SelectFieldProps = {
     name: string;
     label: string;
-    options: string[];
+    options: string[] | SupportAgentType[];
 }
 
 const SelectField = ({ label, options, ...props }: SelectFieldProps) => {
@@ -22,9 +23,13 @@ const SelectField = ({ label, options, ...props }: SelectFieldProps) => {
                 className="p-2.5 rounded-lg border text-sm outline-none transition-all duration-200"
             >
                 <option value="">Select {label}</option>
-                {options.map(option => (
-                    <option key={option} value={option}>{option}</option>
-                ))}
+                {options.map(option =>
+                    typeof option === "string" ? (
+                        <option key={option} value={option}>{option}</option>
+                    ) : (
+                        <option key={option.id} value={option.id}>{option.name}</option>
+                    )
+                )}
             </select>
 
             {meta.error && (
