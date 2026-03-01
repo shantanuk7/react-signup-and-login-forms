@@ -17,3 +17,18 @@ export const getCurrentUser = async () => {
 
     return resposne.data;
 }
+
+export const getAllSupportAgents = async () => {
+    const token = getAuthToken();
+    if (!token) {
+        return null;
+    }
+
+    const resposne = await axios.get(`${baseURI}?role=SUPPORT_AGENT`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+    });
+
+    return resposne.data;
+}
