@@ -64,15 +64,21 @@ export const updateTicket = async (id: string | undefined, values: UpdateTicketT
     if (!token) {
         return null;
     }
-    const { description, status } = values
+    const { description, status, priority } = values
     const payload: UpdateTicketType = {};
 
     if (values.description?.trim() !== "") {
         payload.description = description;
     }
 
-    if (status?.includes("CLOSED")) {
+    if (Array.isArray(status) && status?.includes("CLOSED")) {
         payload.status = status[0];
+    } else if (typeof status === "string" && status.trim() !== "") {
+        payload.status = status;
+    }
+
+    if (priority?.trim() !== "") {
+        payload.priority = priority;
     }
 
     if (Object.keys(payload).length === 0) return;

@@ -10,4 +10,5 @@ export type TicketType = {
 export type UpdateTicketType = {
     description?: string;
     status?: string;
+    priority?: string;
 }
