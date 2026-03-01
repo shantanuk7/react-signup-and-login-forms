@@ -8,10 +8,12 @@ import { updateTicket } from "../api/ticket.api";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
+import SelectField from "../components/SelectField";
 
 const initialValues: UpdateTicketType = {
     description: "",
     status: "",
+    priority: "",
 }
 
 const UpdateTicket = () => {
@@ -57,6 +59,22 @@ const UpdateTicket = () => {
                                     name="status"
                                     type="checkbox"
                                     value="CLOSED"
+                                />
+                            )}
+
+                            {isAllowed("UPDATE_TICKET_STATUS") && (
+                                <SelectField
+                                    label="Status" 
+                                    name="status" 
+                                    options={["IN_PROGRESS", "CLOSED"]} 
+                                />
+                            )}
+
+                            {isAllowed("UPDATE_TICKET_PRIORITY") && (
+                                <SelectField
+                                    label="Priority" 
+                                    name="priority" 
+                                    options={["LOW", "MEDIUM", "HIGH"]} 
                                 />
                             )}
 
