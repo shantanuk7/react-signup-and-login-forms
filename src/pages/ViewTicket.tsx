@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import type { TicketType } from "../types/ticket";
-import { getTicketById } from "../api/ticket.api";
+import { addComment, getTicketById } from "../api/ticket.api";
 import { useParams } from "react-router-dom";
 import Comments from "../components/Comments";
 import AddComment from "../components/AddComment";
 import useIsAllowed from "../hooks/useIsAllowed";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const ViewTicket = () => {
     const { id } = useParams();
@@ -19,6 +21,19 @@ const ViewTicket = () => {
 
         fetchTicket();
     }, [id]);
+
+    const handleAddComment = async (values: {body: string}): Promise<void> => {
+        try {
+            const data = await addComment(id, values.body);
+            if (data.success) {
+                toast.success(data.message);
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                toast.error(error.response?.data?.message);
+            }
+        }
+    }
 
     return (
         <div className="w-full flex justify-center px-4 py-10 md:p-20">
@@ -41,7 +56,7 @@ const ViewTicket = () => {
                 <h2><span className="font-semibold">Created On: </span>{ticket?.createdAt ? new Date(ticket.createdAt).toLocaleDateString() : "-"}</h2>
 
                 <Comments id={id} />
-                <AddComment id={id} />
+                <AddComment handleAddComment={handleAddComment} />
             </div>
         </div>
     )
