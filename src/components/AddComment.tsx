@@ -6,7 +6,12 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { addComment } from "../api/ticket.api";
 
+const initialValues = {
+    body: ""
+}
+
 const AddComment = ({ id }: { id: string | undefined }) => {
+
     const handleSubmit = async (values: { body: string }) => {
         try {
             const data = await addComment(id, values.body);
@@ -25,7 +30,7 @@ const AddComment = ({ id }: { id: string | undefined }) => {
             <h1 className="font-semibold">Add Comment</h1>
 
             <Formik
-                initialValues={{ body: "" }}
+                initialValues={initialValues}
                 validate={validateComment}
                 onSubmit={handleSubmit}
             >
