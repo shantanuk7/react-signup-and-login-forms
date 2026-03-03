@@ -7,9 +7,10 @@ import { updateTicket } from "../api/ticket.api";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-import SelectField from "../components/SelectField";
+import SelectField from "../components/form/SelectField";
 import TextareaInputField from "../components/form/TextareaInputField";
 import FieldError from "../components/form/FieldError";
+import type { SelectOptions } from "../types/form";
 
 const initialValues: UpdateTicketType = {
     description: "",
@@ -34,6 +35,17 @@ const UpdateTicket = () => {
             }
         }
     }
+
+    const statusOptions : SelectOptions[] = [
+        { value: "IN_PROGRESS", label: "In Progress" },
+        { value: "CLOSED", label: "Closed" },
+    ];
+
+    const priorityOptions : SelectOptions[] = [
+        { value: "LOW", label: "Low" },
+        { value: "MEDIUM", label: "Medium" },
+        { value: "HIGH", label: "High" },
+    ];
 
     return (
         <section className="w-full flex items-center justify-center mt-20 p-4">
@@ -73,7 +85,7 @@ const UpdateTicket = () => {
                                     <SelectField
                                         label="Status"
                                         name="status"
-                                        options={["IN_PROGRESS", "CLOSED"]}
+                                        options={statusOptions}
                                     />
                                     <FieldError name="status"/>
                                 </div>
@@ -84,7 +96,7 @@ const UpdateTicket = () => {
                                     <SelectField
                                         label="Priority"
                                         name="priority"
-                                        options={["LOW", "MEDIUM", "HIGH"]}
+                                        options={priorityOptions}
                                     />
                                     <FieldError name="priority"/>
                                 </div>

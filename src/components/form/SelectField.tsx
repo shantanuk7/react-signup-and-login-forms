@@ -1,13 +1,13 @@
 import { useField } from "formik";
-import type { SupportAgentType } from "../types/user";
+import type { SelectOptions } from "../../types/form";
 
 type SelectFieldProps = {
     name: string;
     label: string;
-    options: string[] | SupportAgentType[];
+    options: SelectOptions[];
 }
 
-const SelectField = ({ label, options, ...props }: SelectFieldProps) => {
+const SelectField = ({ label, options, ...props } : SelectFieldProps) : React.JSX.Element => {
     const [field] = useField(props);
 
     return (
@@ -18,17 +18,13 @@ const SelectField = ({ label, options, ...props }: SelectFieldProps) => {
 
             <select
                 id={props.name}
-                {...field}
                 {...props}
+                {...field}
                 className="p-2.5 rounded-lg border text-sm outline-none transition-all duration-200"
             >
                 <option value="">Select {label}</option>
                 {options.map(option =>
-                    typeof option === "string" ? (
-                        <option key={option} value={option}>{option}</option>
-                    ) : (
-                        <option key={option.id} value={option.id}>{option.name}</option>
-                    )
+                        <option key={option.value} value={option.value}>{option.label}</option>
                 )}
             </select>
         </div>

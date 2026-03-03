@@ -3,13 +3,14 @@ import Button from "../components/Button";
 import { useEffect, useState } from "react";
 import type { SupportAgentType, User } from "../types/user";
 import { getAllSupportAgents } from "../api/user.api";
-import SelectField from "../components/SelectField";
+import SelectField from "../components/form/SelectField";
 import { assignTicket } from "../api/ticket.api";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import useUser from "../hooks/useUser";
 import axios from "axios";
 import FieldError from "../components/form/FieldError";
+import type { SelectOptions } from "../types/form";
 
 type AssignTicketType = {
     assignedToUserId: string;
@@ -40,6 +41,11 @@ const AssignTicket = () => {
         fetchAllSupportAgents();
     }, [user?.id]);
 
+    const supportAgentOptions: SelectOptions[] = supportAgents.map(agent => ({
+        value: agent.id,
+        label: agent.name,
+    }));
+
     const handleSubmit = async (values: AssignTicketType) => {
         try {
             const data = await assignTicket(id, user?.id, values?.assignedToUserId);
@@ -69,7 +75,7 @@ const AssignTicket = () => {
                                 <SelectField
                                     label="Select Support Agent"
                                     name="assignedToUserId"
-                                    options={supportAgents}
+                                    options={supportAgentOptions}
                                 />
                                 <FieldError name="assignedToUserId"/>
                             </div>
