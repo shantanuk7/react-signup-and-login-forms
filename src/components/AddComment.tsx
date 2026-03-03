@@ -11,7 +11,7 @@ interface AddCommentProps {
     handleAddComment: (values: {body:string}) => Promise<void>
 }
 
-const AddComment = (addCommentProps : AddCommentProps) : React.JSX.Element => {
+const AddComment = (addCommentProps: AddCommentProps) : React.JSX.Element => {
 
     return (
         <div className="border-t border-neutral-200 pt-4 space-y-4">
@@ -30,7 +30,7 @@ const AddComment = (addCommentProps : AddCommentProps) : React.JSX.Element => {
                             type="textarea"
                         />
 
-                        <div className="mt-2">
+                        <div className="mt-2">  
                             <Button
                                 label="Add Comment"
                                 type="submit"

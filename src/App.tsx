@@ -2,7 +2,7 @@ import { Toaster } from "react-hot-toast";
 import "./App.css";
 import AppRoutes from "./routes/AppRoutes";
 
-function App() {
+const App = (): React.JSX.Element => {
   return (
     <>
       <Toaster />
