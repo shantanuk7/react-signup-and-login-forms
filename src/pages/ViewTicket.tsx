@@ -1,25 +1,33 @@
 import { useEffect, useState } from "react";
 import type { TicketType } from "../types/ticket";
-import { addComment, getTicketById } from "../api/ticket.api";
+import { addComment, getCommentsByTicketId, getTicketById } from "../api/ticket.api";
 import { useParams } from "react-router-dom";
 import Comments from "../components/Comments";
 import AddComment from "../components/AddComment";
 import useIsAllowed from "../hooks/useIsAllowed";
 import toast from "react-hot-toast";
 import axios from "axios";
+import type { CommentType } from "../types/comment";
 
-const ViewTicket = () => {
+const ViewTicket = (): React.JSX.Element => {
     const { id } = useParams();
     const [ticket, setTicket] = useState<TicketType | null>();
+    const [comments, setComments] = useState<(CommentType)[]>();
     const isAllowed = useIsAllowed();
 
     useEffect(() => {
-        const fetchTicket = async () => {
+        const fetchTicket = async (): Promise<void> => {
             const data = await getTicketById(id);
             setTicket(data.data);
         };
 
+        const fetchComments = async (): Promise<void> => {
+            const data = await getCommentsByTicketId(id);
+            setComments(data.data);
+        };
+
         fetchTicket();
+        fetchComments();
     }, [id]);
 
     const handleAddComment = async (values: {body: string}): Promise<void> => {
@@ -55,7 +63,7 @@ const ViewTicket = () => {
                 </h2>
                 <h2><span className="font-semibold">Created On: </span>{ticket?.createdAt ? new Date(ticket.createdAt).toLocaleDateString() : "-"}</h2>
 
-                <Comments id={id} />
+                {comments &&<Comments comments={comments} />}
                 <AddComment handleAddComment={handleAddComment} />
             </div>
         </div>
