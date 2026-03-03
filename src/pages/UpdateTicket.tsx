@@ -1,5 +1,4 @@
 import { Form, Formik } from "formik";
-import InputField from "../components/InputField";
 import Button from "../components/Button";
 import useIsAllowed from "../hooks/useIsAllowed";
 import CheckboxField from "../components/CheckboxField";
@@ -9,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import SelectField from "../components/SelectField";
+import TextareaInputField from "../components/form/TextareaInputField";
 
 const initialValues: UpdateTicketType = {
     description: "",
@@ -46,10 +46,9 @@ const UpdateTicket = () => {
                     {() => (
                         <Form className="flex flex-col gap-4">
                             {isAllowed("UPDATE_TICKET_DESCRIPTION") && (
-                                <InputField
+                                <TextareaInputField
                                     label="Description"
                                     name="description"
-                                    type="textarea"
                                 />
                             )}
 

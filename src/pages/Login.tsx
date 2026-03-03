@@ -1,5 +1,5 @@
 import { Form, Formik } from "formik";
-import InputField from "../components/InputField";
+import TextInputField from "../components/form/TextInputField";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import type { LoginPropsType } from "../types/login";
@@ -47,12 +47,12 @@ const Login = () => {
                 >
                     {() => (
                         <Form className="flex flex-col gap-4">
-                            <InputField
+                            <TextInputField
                                 label="Email"
                                 name="email"
                                 type="email"
                             />
-                            <InputField
+                            <TextInputField
                                 label="Password"
                                 name="password"
                                 type="password"

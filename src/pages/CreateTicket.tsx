@@ -4,11 +4,12 @@ import { validateTicket } from "../utils/validateTicket";
 import axios from "axios";
 import { createTicket } from "../api/ticket.api";
 import toast from "react-hot-toast";
-import InputField from "../components/InputField";
+import TextInputField from "../components/form/TextInputField";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import useIsAllowed from "../hooks/useIsAllowed";
 import { useEffect } from "react";
+import TextareaInputField from "../components/form/TextareaInputField";
 
 const initialValues: TicketType = {
     title: "",
@@ -50,16 +51,15 @@ const CreateTicket = () => {
                 >
                     {() => (
                         <Form className="flex flex-col gap-4">
-                            <InputField
+                            <TextInputField
                                 label="Title"
                                 name="title"
                                 type="text"
                             />
 
-                            <InputField
+                            <TextareaInputField
                                 label="Description"
                                 name="description"
-                                type="textarea"
                             />
 
                             <div className="mt-2">

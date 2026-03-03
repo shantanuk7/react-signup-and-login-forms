@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
-import InputField from "./InputField";
 import Button from "./Button";
 import { validateComment } from "../utils/validateTicket";
+import TextareaInputField from "./form/TextareaInputField";
 
 const initialValues = {
     body: ""
@@ -24,10 +24,9 @@ const AddComment = (addCommentProps: AddCommentProps) : React.JSX.Element => {
             >
                 {() => (
                     <Form className="flex flex-col gap-4">
-                        <InputField
+                        <TextareaInputField
                             label=""
                             name="body"
-                            type="textarea"
                         />
 
                         <div className="mt-2">  

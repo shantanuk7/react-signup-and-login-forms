@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
 import Button from "../components/Button";
 import { Link, useNavigate } from "react-router-dom";
-import InputField from "../components/InputField";
+import TextInputField from "../components/form/TextInputField";
 import type { SignupPropsType } from "../types/signup";
 import { validateSignup } from "../utils/validateFields";
 import axios from "axios";
@@ -47,22 +47,22 @@ const Signup = () => {
                 >
                     {() => (
                         <Form className="flex flex-col gap-4">
-                            <InputField
+                            <TextInputField
                                 label="Full Name"
                                 name="name"
                                 type="text"
                             />
-                            <InputField
+                            <TextInputField
                                 label="Email"
                                 name="email"
                                 type="email"
                             />
-                            <InputField
+                            <TextInputField
                                 label="Password"
                                 name="password"
                                 type="password"
                             />
-                            <InputField
+                            <TextInputField
                                 label="Confirm Password"
                                 name="confirmPassword"
                                 type="password"
