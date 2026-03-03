@@ -1,5 +1,5 @@
 import { Form, Formik } from "formik";
-import Button from "../components/Button";
+import Button from "../components/form/Button";
 import { Link, useNavigate } from "react-router-dom";
 import TextInputField from "../components/form/TextInputField";
 import type { SignupPropsType } from "../types/signup";

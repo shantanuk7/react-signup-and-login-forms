@@ -1,9 +1,9 @@
 type ButtonProps = {
-    type: "submit" | "reset" | "button" | undefined;
+    type: "submit" | "reset" | "button";
     label: string;
 }
 
-const Button = ({ type, label }: ButtonProps) => {
+const Button = ({ type, label }: ButtonProps): React.JSX.Element => {
     return (
         <button
             type={type}

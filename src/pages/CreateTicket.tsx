@@ -5,7 +5,7 @@ import axios from "axios";
 import { createTicket } from "../api/ticket.api";
 import toast from "react-hot-toast";
 import TextInputField from "../components/form/TextInputField";
-import Button from "../components/Button";
+import Button from "../components/form/Button";
 import { useNavigate } from "react-router-dom";
 import useIsAllowed from "../hooks/useIsAllowed";
 import { useEffect } from "react";

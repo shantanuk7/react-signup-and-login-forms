@@ -1,5 +1,5 @@
 import { Form, Formik } from "formik";
-import Button from "../components/Button";
+import Button from "../components/form/Button";
 import { useEffect, useState } from "react";
 import type { SupportAgentType, User } from "../types/user";
 import { getAllSupportAgents } from "../api/user.api";

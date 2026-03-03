@@ -1,5 +1,5 @@
 import { Form, Formik } from "formik";
-import Button from "./Button";
+import Button from "./form/Button";
 import { validateComment } from "../utils/validateTicket";
 import TextareaInputField from "./form/TextareaInputField";
 import FieldError from "./form/FieldError";

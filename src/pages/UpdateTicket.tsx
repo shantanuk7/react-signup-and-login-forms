@@ -1,5 +1,5 @@
 import { Form, Formik } from "formik";
-import Button from "../components/Button";
+import Button from "../components/form/Button";
 import useIsAllowed from "../hooks/useIsAllowed";
 import CheckboxField from "../components/CheckboxField";
 import type { UpdateTicketType } from "../types/ticket";

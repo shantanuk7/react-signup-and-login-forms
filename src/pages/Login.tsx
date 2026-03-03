@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
 import TextInputField from "../components/form/TextInputField";
 import { Link, useNavigate } from "react-router-dom";
-import Button from "../components/Button";
+import Button from "../components/form/Button";
 import type { LoginPropsType } from "../types/login";
 import { validateLogin } from "../utils/validateFields";
 import axios from "axios";
