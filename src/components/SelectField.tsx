@@ -8,7 +8,7 @@ type SelectFieldProps = {
 }
 
 const SelectField = ({ label, options, ...props }: SelectFieldProps) => {
-    const [field, meta] = useField(props);
+    const [field] = useField(props);
 
     return (
         <div className="flex flex-col gap-1">
@@ -31,10 +31,6 @@ const SelectField = ({ label, options, ...props }: SelectFieldProps) => {
                     )
                 )}
             </select>
-
-            {meta.error && (
-                <div className="text-xs text-red-500 mt-0.5">{meta.error}</div>
-            )}
         </div>
     )
 }

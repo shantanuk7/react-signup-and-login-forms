@@ -9,6 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import useUser from "../hooks/useUser";
 import axios from "axios";
+import FieldError from "../components/form/FieldError";
 
 type AssignTicketType = {
     assignedToUserId: string;
@@ -64,11 +65,14 @@ const AssignTicket = () => {
                 >
                     {() => (
                         <Form className="flex flex-col gap-4">
-                            <SelectField
-                                label="Select Support Agent"
-                                name="assignedToUserId"
-                                options={supportAgents}
-                            />
+                            <div>
+                                <SelectField
+                                    label="Select Support Agent"
+                                    name="assignedToUserId"
+                                    options={supportAgents}
+                                />
+                                <FieldError name="assignedToUserId"/>
+                            </div>
 
                             <div className="mt-2">
                                 <Button

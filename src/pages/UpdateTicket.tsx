@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import SelectField from "../components/SelectField";
 import TextareaInputField from "../components/form/TextareaInputField";
+import FieldError from "../components/form/FieldError";
 
 const initialValues: UpdateTicketType = {
     description: "",
@@ -46,35 +47,47 @@ const UpdateTicket = () => {
                     {() => (
                         <Form className="flex flex-col gap-4">
                             {isAllowed("UPDATE_TICKET_DESCRIPTION") && (
-                                <TextareaInputField
-                                    label="Description"
-                                    name="description"
-                                />
+                                <div>
+                                    <TextareaInputField
+                                        label="Description"
+                                        name="description"
+                                    />
+                                    <FieldError name="description"/>
+                                </div>
                             )}
 
                             {isAllowed("CLOSE_TICKET") && (
-                                <CheckboxField
-                                    label="Close Ticket"
-                                    name="status"
-                                    type="checkbox"
-                                    value="CLOSED"
-                                />
+                                <div>
+                                    <CheckboxField
+                                        label="Close Ticket"
+                                        name="status"
+                                        type="checkbox"
+                                        value="CLOSED"
+                                    />
+                                    <FieldError name="status" />
+                                </div>
                             )}
 
                             {isAllowed("UPDATE_TICKET_STATUS") && (
-                                <SelectField
-                                    label="Status" 
-                                    name="status" 
-                                    options={["IN_PROGRESS", "CLOSED"]} 
-                                />
+                                <div>
+                                    <SelectField
+                                        label="Status"
+                                        name="status"
+                                        options={["IN_PROGRESS", "CLOSED"]}
+                                    />
+                                    <FieldError name="status"/>
+                                </div>
                             )}
 
                             {isAllowed("UPDATE_TICKET_PRIORITY") && (
-                                <SelectField
-                                    label="Priority" 
-                                    name="priority" 
-                                    options={["LOW", "MEDIUM", "HIGH"]} 
-                                />
+                                <div>
+                                    <SelectField
+                                        label="Priority"
+                                        name="priority"
+                                        options={["LOW", "MEDIUM", "HIGH"]}
+                                    />
+                                    <FieldError name="priority"/>
+                                </div>
                             )}
 
                             <div className="mt-2">

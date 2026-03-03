@@ -9,6 +9,7 @@ import { setAuthToken } from "../utils/authToken";
 import { userLogin } from "../api/auth.api";
 import toast from "react-hot-toast";
 import useUser from "../hooks/useUser";
+import FieldError from "../components/form/FieldError";
 
 const initialValues: LoginPropsType = {
     email: "",
@@ -52,11 +53,14 @@ const Login = () => {
                                 name="email"
                                 type="email"
                             />
+                            <FieldError name="email"/>
+
                             <TextInputField
                                 label="Password"
                                 name="password"
                                 type="password"
                             />
+                            <FieldError name="password"/>
 
                             <div className="mt-2">
                                 <Button

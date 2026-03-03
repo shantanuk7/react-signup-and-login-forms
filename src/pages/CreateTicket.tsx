@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import useIsAllowed from "../hooks/useIsAllowed";
 import { useEffect } from "react";
 import TextareaInputField from "../components/form/TextareaInputField";
+import FieldError from "../components/form/FieldError";
 
 const initialValues: TicketType = {
     title: "",
@@ -51,16 +52,22 @@ const CreateTicket = () => {
                 >
                     {() => (
                         <Form className="flex flex-col gap-4">
-                            <TextInputField
-                                label="Title"
-                                name="title"
-                                type="text"
-                            />
+                            <div>
+                                <TextInputField
+                                    label="Title"
+                                    name="title"
+                                    type="text"
+                                />
+                                <FieldError name="title"/>
+                            </div>
 
-                            <TextareaInputField
-                                label="Description"
-                                name="description"
-                            />
+                            <div>
+                                <TextareaInputField
+                                    label="Description"
+                                    name="description"
+                                />
+                                <FieldError name="description"/>
+                            </div>
 
                             <div className="mt-2">
                                 <Button
