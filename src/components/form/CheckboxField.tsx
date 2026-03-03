@@ -3,19 +3,19 @@ import { useField } from "formik";
 type CheckboxFieldProps = {
     name: string;
     label: string;
-    type: string;
     value?: string;
 }
 
-const CheckboxField = ({ label, ...props }: CheckboxFieldProps) => {
+const CheckboxField = ({ label, ...props }: CheckboxFieldProps) : React.JSX.Element => {
     const [field] = useField(props);
 
     return (
         <div className="flex items-center gap-2">
             <input
                 id={props.name}
-                {...field}
                 {...props}
+                {...field}
+                type="checkbox"
                 className="cursor-pointer"
             />
 

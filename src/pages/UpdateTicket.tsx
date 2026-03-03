@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
 import Button from "../components/form/Button";
 import useIsAllowed from "../hooks/useIsAllowed";
-import CheckboxField from "../components/CheckboxField";
+import CheckboxField from "../components/form/CheckboxField";
 import type { UpdateTicketType } from "../types/ticket";
 import { updateTicket } from "../api/ticket.api";
 import { useNavigate, useParams } from "react-router-dom";
@@ -73,7 +73,6 @@ const UpdateTicket = () => {
                                     <CheckboxField
                                         label="Close Ticket"
                                         name="status"
-                                        type="checkbox"
                                         value="CLOSED"
                                     />
                                     <FieldError name="status" />
