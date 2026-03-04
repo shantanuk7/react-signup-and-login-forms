@@ -6,7 +6,7 @@ type TicketActionsPropsType = {
     status: string | undefined;
 }
 
-const TicketActions = ({ ticketId, status }: TicketActionsPropsType) => {
+const TicketActions = ({ ticketId, status }: TicketActionsPropsType) : React.JSX.Element => {
     const isAllowed = useIsAllowed();
 
     return (

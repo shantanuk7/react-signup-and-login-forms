@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const NotFound = () => {
+const NotFound = () : React.JSX.Element => {
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center gap-6">
         <h1 className="text-xl sm:text-2xl md:text-4xl font-bold">404 - Page Not Found</h1>

@@ -4,7 +4,7 @@ import type { TicketType } from "../types/ticket";
 import useIsAllowed from "../hooks/useIsAllowed";
 import TicketActions from "../components/TicketActions";
 
-const Tickets = () => {
+const Tickets = () : React.JSX.Element => {
     const [tickets, setTickets] = useState<(TicketType | null)[]>();
     const isAllowed = useIsAllowed();
 

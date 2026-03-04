@@ -16,7 +16,7 @@ const initialValues: SignupPropsType = {
     confirmPassword: "",
 }
 
-const Signup = () => {
+const Signup = () : React.JSX.Element => {
     const navigate = useNavigate();
 
     const handleSubmit = async (values: SignupPropsType) => {

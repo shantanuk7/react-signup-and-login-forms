@@ -11,7 +11,7 @@ import UpdateTicket from "../pages/UpdateTicket";
 import AssignTicket from "../pages/AssignTicket";
 import Ticket from "../pages/Ticket";
 
-const AppRoutes = () => {
+const AppRoutes = () : React.JSX.Element => {
     return (
         <BrowserRouter>
             <Routes>

@@ -16,7 +16,7 @@ const initialValues: LoginPropsType = {
     password: "",
 }
 
-const Login = () => {
+const Login = () : React.JSX.Element => {
     const { fetchCurrentUser } = useUser();
     const navigate = useNavigate();
 

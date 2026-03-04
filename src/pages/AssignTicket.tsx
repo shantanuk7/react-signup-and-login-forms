@@ -20,7 +20,7 @@ const initialValues: AssignTicketType = {
     assignedToUserId: "",
 }
 
-const AssignTicket = () => {
+const AssignTicket = () : React.JSX.Element => {
     const { id } = useParams();
     const { user } = useUser();
     const navigate = useNavigate();

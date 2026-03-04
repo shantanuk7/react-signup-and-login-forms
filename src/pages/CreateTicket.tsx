@@ -17,7 +17,7 @@ const initialValues: TicketType = {
     description: "",
 }
 
-const CreateTicket = () => {
+const CreateTicket = () : React.JSX.Element => {
     const navigate = useNavigate();
     const isAllowed = useIsAllowed();
     const handleSubmit = async (values: TicketType) => {

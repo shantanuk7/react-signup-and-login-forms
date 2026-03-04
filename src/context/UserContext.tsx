@@ -17,7 +17,7 @@ const UserContext = createContext<UserContextType>({
     fetchCurrentUser: async () => {},
 });
 
-export const UserProvider = ({ children }: { children: React.ReactNode }) => {
+export const UserProvider = ({ children }: { children: React.ReactNode }) : React.JSX.Element => {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
 
