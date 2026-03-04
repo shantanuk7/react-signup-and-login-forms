@@ -1,8 +1,9 @@
 import useUser from "./useUser";
 
-const useIsAllowed = () => {
+const useIsAllowed = (): (permission: string) => boolean => {
     const { user } = useUser();
-    const isAllowed = (permission: string) => user?.permissions?.includes(permission);
+
+    const isAllowed = (permission: string): boolean => user?.permissions?.includes(permission) ?? false;
 
     return isAllowed;
 }
